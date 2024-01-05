@@ -1,0 +1,51 @@
+<%- include ("../templates/encabezado") %>
+<%- include ("../templates/menuUsu") %>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Productos</h1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Foto</th>
+                        <th>Comprar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    productos.forEach((producto) => {
+                   %>
+                    <tr>
+                        <td><%= producto.id %></td>
+                        <td><%= producto.nombre %></td>
+                        <td><%= producto.descripcion %></td>
+                        <td><%= producto.precio %></td>
+                        <td><img src="/imagesProducto/<%=producto.foto%> " alt="" width='100px'></td>
+                      <td>
+                        <button class="Compra" onclick="window.modal1.showModal();">Comprar</button>
+
+                        <dialog id="modal1">
+                           <h2>Gracias por su compra</h2>
+                           <p>Usted a adquirido el producto</p>
+                           <button onclick="window.modal1.close();">Cerrar</button>
+                        </dialog>
+                    </td>
+                    </tr>
+                    <%
+                    });
+                    %>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+</div>
+<script src="/modelos/Compras.js"></script>
+<%- include ("../templates/pie") %>
